@@ -46,7 +46,7 @@ class VendorPlugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * Define default as 'auto'
      */
-    const METHOD_DEFAULT = self::METHOD_AUTO;
+    const METHOD_DEFAULT = VendorPlugin::METHOD_AUTO;
 
     /**
      * @var Filesystem

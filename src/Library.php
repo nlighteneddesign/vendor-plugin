@@ -115,7 +115,7 @@ class Library
     {
         $projectPath = $this->getBasePath();
         $resourceDir = $this->getResourcesDir();
-        $publicPath = Util::joinPaths($projectPath, self::PUBLIC_PATH, $resourceDir);
+        $publicPath = Util::joinPaths($projectPath, Library::PUBLIC_PATH, $resourceDir);
         return $publicPath;
     }
 
@@ -138,7 +138,7 @@ class Library
      */
     public function getRelativePath()
     {
-        return trim(substr($this->path ?? '', strlen($this->basePath ?? '')), self::TRIM_CHARS ?? '');
+        return trim(substr($this->path ?? '', strlen($this->basePath ?? '')), Library::TRIM_CHARS ?? '');
     }
 
     /**
@@ -271,13 +271,13 @@ class Library
         $rootProject = new JsonFile($rootComposerFile, null, new NullIO());
 
         if (!$rootProject->exists()) {
-            return self::DEFAULT_RESOURCES_DIR;
+            return Library::DEFAULT_RESOURCES_DIR;
         }
 
         $rootProjectData = $rootProject->read();
         $resourcesDir = isset($rootProjectData['extra']['resources-dir'])
             ? $rootProjectData['extra']['resources-dir']
-            : self::DEFAULT_RESOURCES_DIR;
+            : Library::DEFAULT_RESOURCES_DIR;
 
 
         if (preg_match('/^[_\-a-z0-9]+$/i', $resourcesDir ?? '')) {
